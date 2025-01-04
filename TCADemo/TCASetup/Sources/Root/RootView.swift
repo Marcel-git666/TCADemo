@@ -15,9 +15,18 @@ public struct RootFeature {
     public struct State: Equatable {
         public init() {}
     }
-    public enum Action {}
+    public enum Action {
+        case didFinishLaunching
+    }
     public var body: some ReducerOf<Self> {
-        EmptyReducer()
+        Reduce { state, action in
+            switch action {
+            case .didFinishLaunching:
+                print("Did finish launching.")
+                return .none
+            }
+            
+        }
     }
 }
 
